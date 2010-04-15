@@ -8,9 +8,7 @@ require.paths.unshift(exports.libDir);
  
 var assert = require('assert');
 var sys = require("sys");
- 
-process.mixin(exports, sys);
-exports.assert = require('assert');
+
 exports.path = path;
 
 var ok = assert.ok;
