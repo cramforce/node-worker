@@ -15,6 +15,7 @@ var all = [];
 
 var count = 0;
 var place = 0;
+var terminated = 0;
 function startAndExpect(count) {
   sys.puts("Starting worker "+count)
   var worker = makeWorker("fib-worker.js");
@@ -28,18 +29,19 @@ function startAndExpect(count) {
       sys.puts(count +"th worker came in "+place);
       place++;
       worker.terminate();
+      sys.error("Termindated "+terminated++);
     })
     worker.onerror = function (err) {
       sys.error(JSON.stringify(err));
     }
-  }, 1000);
+  }, 2000);
 }
 
-/*
+
 // gather results
 process.addListener("exit", function () {
   sys.puts(JSON.stringify(all));
-})*/
+})
 
 for(var i = 40; i >= 0; i--) { // start with the hardest
   startAndExpect(i);
