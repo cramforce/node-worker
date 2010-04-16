@@ -47,8 +47,8 @@ setTimeout(function () {
       assert.ok(true, "Received expected error via event");
       w2.terminate();
     });
-    w2.addListener("message", function () {
-      assert.ok(false, "Wanted an error, but got a message");
+    w2.addListener("message", function (message) {
+      assert.ok(false, "Wanted an error, but got a message: "+JSON.stringify(message));
       w2.terminate();
     });
     
@@ -60,8 +60,8 @@ setTimeout(function () {
       assert.ok(true, "Received expected error with onerror");
       w3.terminate();
     };
-    w3.addListener("message", function () {
-      assert.ok(false, "Wanted an error, but got a message");
+    w3.addListener("message", function (message) {
+      assert.ok(false, "Wanted an error, but got a message: "+JSON.stringify(message));
       w3.terminate();
     });
     
