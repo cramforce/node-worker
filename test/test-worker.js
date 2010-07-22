@@ -1,5 +1,5 @@
 var common = require("./common");
-var sys    = require("./sys");
+var sys    = require("sys");
 var assert = require('assert');
  
 var Worker = require("../lib/worker").Worker;
